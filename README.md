@@ -1,5 +1,5 @@
 # joomla-devtools
-Tools for Joomla Development abd Release Management on the command line
+Tools for Joomla Development and Release Management on the command line
 
 Work in progress!
 
