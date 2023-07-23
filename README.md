@@ -7,6 +7,9 @@ Work in progress!
 Build a Joomla Release Package, cloning from Joomla Repo
 
 ## jcheckout.sh 
+### Create Dev Enviroment and restore data
+Delete all tables with jdelete.sh
+Restore the tables with jrestore.sh
 Clone a Joomla Dev from Repo, set remote upstream to original joomla-cms
 Fetch Upstream, Checkout Dev
 copy configuration.php from base dir
