@@ -1,0 +1,12 @@
+SET GROUP_CONCAT_MAX_LEN=10000;
+SET @doit = (SELECT count(*) FROM information_schema.TABLES
+              WHERE TABLE_SCHEMA = '#DB#'
+                AND TABLE_NAME LIKE '#PREFIX#_%');
+SET @tbls = (SELECT GROUP_CONCAT(TABLE_NAME)
+               FROM information_schema.TABLES
+              WHERE TABLE_SCHEMA = '#DB#'
+                AND TABLE_NAME LIKE '#PREFIX#_%');
+SET @delStmt = CASE WHEN @doit >= 1 THEN CONCAT('DROP TABLE ',  @tbls) ELSE 'SELECT "No tables to delete" as output' END;
+PREPARE stmt FROM @delStmt;
+EXECUTE stmt;
+DEALLOCATE PREPARE stmt;

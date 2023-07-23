@@ -1,0 +1,12 @@
+#!/bin/bash
+export GPG_TTY=$(tty)
+rm -rf joomla-cms
+git clone https://github.com//#USER#/joomla-cms.git
+cd joomla-cms
+git checkout #DEV_VERSION#
+git branch #SHORT_VERSION#
+git switch #SHORT_VERSION#
+php build/bump.php -v #SHORT_VERSION# -c #CODENAME# -d "#RELEASEDATETIME#"
+git commit -am 'Joomla! #EXT_VERSION#'
+git tag -s -m "Joomla! #EXT_VERSION#" #SHORT_VERSION#
+php build/build.php
