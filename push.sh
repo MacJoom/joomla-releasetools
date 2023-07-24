@@ -22,19 +22,8 @@ echo "Tag: $tag"
 echo "Commit: $commit"
 echo "Next: $next"
 export GPG_TTY=$(tty)
-rm -rf joomla-cms
-git clone https://github.com//joomla/joomla-cms.git
-#git clone https://github.com//MacJoom/joomla-cms.git
 cd joomla-cms
-git checkout $checkout
-git branch $branch
-git switch $branch
-cp ../config.joomla .git/config
-read -p "Press any key to push branch ..."
-git push --set-upstream origin $branch
-read -p "Press any key to start build/bump ..."
-php build/bump.php -v $tag -c $codename -d "$reldate"
-git commit -am "$commit"
-git tag -s -m "$commit" $tag
-read -p "Press any key to start build/build ..."
-php build/build.php
+read -p "Press any key to push branch and tags ..."
+git push 
+git push --tags
+
