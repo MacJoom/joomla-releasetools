@@ -1,7 +1,9 @@
 # joomla-devtools
-Tools for Joomla Development and Release Management on the command line
+Tools for Release Management and Joomla Development on the command line
 
 Work in progress! Works for Minor releases only at the moment
+I have done some Joomla 4.4.0 Alpha releases with the following tools
+Any comments and/or PR's welcome!
 
 ## globals.sh
 - Set's up all constants used by the scripts
