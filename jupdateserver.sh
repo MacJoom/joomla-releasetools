@@ -18,11 +18,8 @@ cd ..
 
 file1="update.joomla.org/www/core/nightlies/next_minor_extension.xml"
 file2="update.joomla.org/www/core/nightlies/next_minor_list.xml"
-#if ! [ -z "$1" ]
-#then
 sed -i "s/$s/$r/g" $file1
 sed -i "s/$s/$r/g" $file2
-#fi
 cd update.joomla.org
 git commit -am "$b"
 git push --set-upstream origin $b
