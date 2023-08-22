@@ -5,6 +5,40 @@ Work in progress!
 
 ## build.sh
 Build a Joomla Release Package, cloning from Joomla Repo
+- deletes joomla-cms
+- clones from github.com//joomla/joomla-cms.git
+- cd's into joomla-cms
+- checks out current dev
+- creates release branch
+- switches to release branch
+- copies the .git/config for the key
+- pushes branch
+- builds the release bump
+- commits the bump
+- creates the new release tag
+- builds the release
+
+No further push yet
+
+## pushtag.sh
+- cd's into joomla-cms
+- shows status und branch
+- shows tags
+- pushes the tag
+
+## jupdateserver.sh 
+- Clone update.joomla.org from Repo
+- Checkout master
+- Create new branch 
+- replace string in nightlies xml (only minor)
+- commit and push  
+
+## reverttodevandpush.sh
+- cd's into joomla-cms
+- builds the revert to dev bump
+- stages files (git add .)
+- commits "Revert to dev"
+- does the final push
 
 ## jcheckout.sh 
 ### Create Dev Enviroment and restore data
@@ -24,10 +58,5 @@ Dump all tables from DB with a certain prefix to prefixedtable_dump.sql
 ## jrestore.sh
 Restore the tables previously dumped to prefixedtable_dump.sql
 
-## jupdateserver.sh 
-Clone update.joomla.org from Repo
-Checkout master
-Create new branch 
-replace string in nightlies xml (only minor)
-commit and push
+
 
