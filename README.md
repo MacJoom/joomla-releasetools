@@ -1,7 +1,10 @@
 # joomla-devtools
 Tools for Joomla Development and Release Management on the command line
 
-Work in progress!
+Work in progress! Works for Minor releases only at the moment
+
+## globals.sh
+- Set's up all constants used by the scripts
 
 ## build.sh
 Build a Joomla Release Package, cloning from Joomla Repo
