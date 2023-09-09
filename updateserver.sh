@@ -1,12 +1,12 @@
 #!/bin/bash
 #Change xml's 
 #www/core/nightlies/next_minor_extension.xml and www/core/nightlies/next_minor_list.xml
-#Replace 4.4.0-dev with 4.4.0-alpha3-dev
+#Example: Replace 4.4.0-dev with 4.4.0-alpha3-dev
 #Make sure you are in master, create new branch and switch to it
 . globals.sh
 rm -rf update.joomla.org
-#s="4.4.0-$extra$extranum-dev"
-s="4.4.0-$oldextra$oldextranum-dev"
+s="4.4.0-$extra$extranum-dev"
+#s="4.4.0-$oldextra$oldextranum-dev" #Hack for transition from alpha to beta
 r="4.4.0-$extranext$extranumnext-dev"
 b="4.4.0-$extra$extranum"
 echo "Coming from: $s going to: $r branch: $b"
