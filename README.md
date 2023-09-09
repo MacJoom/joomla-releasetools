@@ -7,7 +7,7 @@ I have done some Joomla 4.4.0 Alpha releases with the following tools
 
 Any comments and/or PR's welcome!
 
-##Workflow:
+## Workflow:
 1) Setup up globals.sh
 2) Do build.sh (pushes the newly created branch!)
 3) If you have to do security updates you have to stop before bump and do a buildfrombump.sh 
