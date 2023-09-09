@@ -5,7 +5,8 @@
 #Make sure you are in master, create new branch and switch to it
 . globals.sh
 rm -rf update.joomla.org
-s="4.4.0-$extra$extranum-dev"
+#s="4.4.0-$extra$extranum-dev"
+s="4.4.0-$oldextra$oldextranum-dev"
 r="4.4.0-$extranext$extranumnext-dev"
 b="4.4.0-$extra$extranum"
 echo "Coming from: $s going to: $r branch: $b"
