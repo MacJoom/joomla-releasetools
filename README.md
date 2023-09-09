@@ -1,5 +1,5 @@
 # joomla-releasetools
-Tools for Joomla! Release Management on the command line
+Tools for Joomla! Release Management on the linux command line - uses bash
 
 Work in progress! Works for Minor releases only at the moment
 
