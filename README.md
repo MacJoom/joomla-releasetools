@@ -1,6 +1,10 @@
 # joomla-releasetools
 Tools for Joomla! Release Management on the linux command line - uses bash
 
+## prerequisites
+- your are in a local webspace where joomla-cms is cloned into
+- composer, npm installed, means you have done a joomla development installation before
+
 Work in progress! Works for Minor releases only at the moment
 
 I have done some Joomla 4.4.0 Alpha releases with the following tools
