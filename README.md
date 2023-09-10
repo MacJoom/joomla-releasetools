@@ -3,6 +3,9 @@ Tools for Joomla! Release Management on the linux command line - uses bash
 
 ## Prerequisites
 - your are in a local webspace where joomla-cms is cloned into with a linux terminal
+- web/joomla-cms is where joomla resides
+- web/joomla-release is where tools are
+- build the symlinks in the web directory with joomla-releasetools/.symlinks.sh
 - composer, npm installed, means you have done a joomla development installation before
 
 Work in progress! Works for Minor releases only at the moment
