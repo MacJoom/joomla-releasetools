@@ -1,14 +1,20 @@
 # joomla-releasetools
-Tools for Joomla! Release Management on the command line
+Tools for Joomla! Release Management on the linux command line - uses bash
+
+## Prerequisites
+- your are in a local webspace where joomla-cms is cloned into with a linux terminal
+- composer, npm installed, means you have done a joomla development installation before
 
 Work in progress! Works for Minor releases only at the moment
+
 I have done some Joomla 4.4.0 Alpha releases with the following tools
+
 Any comments and/or PR's welcome!
 
-##Workflow:
+## Workflow:
 1) Setup up globals.sh
 2) Do build.sh (pushes the newly created branch!)
-3) If you have to do security updates you have to stop before bump and do a buildfrombump.sh 
+3) If you have to do security updates you have to stop before bump and then do a buildfrombump.sh 
 4) Check your build (build/tmp/packages), upload to private server
 5) use buildonly.sh to redo the build
 6) updateserver.sh to prepare a PR for the nightlies
