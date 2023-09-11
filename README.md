@@ -37,7 +37,7 @@ Build a Joomla Release Package, cloning from Joomla Repo
 - checks out current dev
 - creates release branch
 - switches to release branch
-- copies the .git/config for the key
+- copies the .git/config for the token
 - pushes branch
 - builds the release bump
 - commits the bump
