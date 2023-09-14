@@ -1,5 +1,6 @@
 #!/bin/bash
 . globals.sh
+echo "Repository: $repository"
 echo "Checkout: $checkout"
 echo "Branch: $branch"
 echo "Tag: $tag"
@@ -8,8 +9,7 @@ echo "Next: $next"
 read -p "Press any key to start..."
 export GPG_TTY=$(tty)
 rm -rf joomla-cms
-git clone https://github.com//joomla/joomla-cms.git
-#git clone https://github.com//MacJoom/joomla-cms.git
+git clone $repository
 cd joomla-cms
 git checkout $checkout
 read -p "Press any key to create branch ..."

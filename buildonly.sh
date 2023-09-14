@@ -1,5 +1,6 @@
 #!/bin/bash
 . globals.sh
+echo "Repository: $repository"
 echo "Checkout: $checkout"
 echo "Branch: $branch"
 echo "Tag: $tag"

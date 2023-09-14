@@ -1,5 +1,6 @@
+repository="https://github.com//MacJoomTest/joomla-cms.git"
 stage="beta"
-stagenum="1"
+stagenum="2"
 minversion="4"
 majversion="4"
 patchversion="0"
