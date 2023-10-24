@@ -19,6 +19,7 @@ cp ../config.joomla .git/config
 read -p "Press any key to push branch ..."
 git push --set-upstream origin $branch
 read -p "Press any key to start build/bump ..."
+echo "php build/bump.php -v $tag -c $codename -d \"$reldate\""
 php build/bump.php -v $tag -c $codename -d "$reldate"
 git commit -am "$commit"
 git tag -s -m "$commit" $tag
