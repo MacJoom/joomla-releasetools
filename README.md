@@ -28,6 +28,20 @@ Any comments and/or PR's welcome!
 
 ## globals.sh
 - Set's up all constants used by the scripts
+### constants 
+repoowner: Owner of the Joomla Repository e.g. "joomla" for live, "MacJoom" for own repository
+repository: Path of Joomla repository - build with repowner (usually no change needed)
+minversion: Minor version
+majversion: Major version
+patchverison: Patch version
+oldextra: Old extra version e.g. "RC" "Alpha" "Beta" 
+oldextranum: Old extra version num e.g. "1" "2"
+extra: Extra version "RC" "Alpha" "Beta" 
+extranum: Extra version num e.g. "1" "2"
+extranumnext: Next extra version num "2" "3"
+codename: Internal name of the Joomal Version e.g. "Pamjoa" for 4.4
+reldate: Release date and time e.g. "2023-11-28 16:00" in UTC
+revdate: Revert to dev date and time usually 1 Minute after release
 
 ## build.sh
 Build a Joomla Release Package, cloning from Joomla Repo
