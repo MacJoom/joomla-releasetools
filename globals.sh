@@ -1,4 +1,4 @@
-repoowner="MacJoom"
+repoowner="joomla"
 repository="https://github.com//$repoowner/joomla-cms.git"
 #repository="https://github.com//MacJoom/joomla-cms.git"
 joomladir="joomla-cms"
@@ -7,7 +7,7 @@ majversion="4"
 patchversion="1"
 oldextra=""
 oldextranum="2"
-extra=""
+extra="rc"
 extranum="1"
 extranext="rc"
 extranumnext="2"
@@ -24,7 +24,7 @@ then
     next="$majversion.$minversion.$nextpatchversion"
 else
     branch="$majversion.$minversion.$patchversion-$extra"
-    tag="$majversion.$minversion.$patchversion"
+    tag="$majversion.$minversion.$patchversion-$extra$extranum"
     commit="Joomla! $majversion.$minversion.$patchversion ${extra^} $extranum"
     next="$majversion.$minversion.$patchversion-$extranext$extranumnext"
 fi
