@@ -30,17 +30,18 @@ fi
 echo "Have you updated the branch on your repository?"
 echo "Coming from: $s going to: $r branch: $b"
 read -p "Press any key to clone and do the update..."
-git clone git@github.com:MacJoom/update.joomla.org.git
+git clone git@github.com:$repoowner/update.joomla.org.git
 cd update.joomla.org
 git checkout master
-git branch $b
-git switch $b
-cd ..
-file1="update.joomla.org/www/core/nightlies/next_minor_extension.xml"
-file2="update.joomla.org/www/core/nightlies/next_minor_list.xml"
-sed -i "s/$s/$r/g" $file1
-sed -i "s/$s/$r/g" $file2
-cd update.joomla.org
-git commit -am "$b"
+#git checkout 5.0.1-stable
+#git branch $b
+#git switch $b
+#cd ..
+#file1="update.joomla.org/www/core/nightlies/next_minor_extension.xml"
+#file2="update.joomla.org/www/core/nightlies/next_minor_list.xml"
+#sed -i "s/$s/$r/g" $file1
+#sed -i "s/$s/$r/g" $file2
+#cd update.joomla.org
+#git commit -am "$b"
 #git push --set-upstream origin $b
 
