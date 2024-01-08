@@ -4,6 +4,9 @@
 #Example: Replace 4.4.0-dev with 4.4.0-alpha3-dev
 #Make sure you are in master, create new branch and switch to it
 . globals.sh
+repoowner="MacJoom"
+repository="https://github.com//$repoowner/joomla-cms.git"
+echo "Repository for updateserver.joomla.org: $repository"
 rm -rf update.joomla.org
 if [ -z "$extra" ] #are we on stable
 then
