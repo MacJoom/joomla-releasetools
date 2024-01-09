@@ -10,7 +10,7 @@ then
 fi
 clone=$1
 . globals.sh
-repoowner="joomla"
+repoowner="MacJoom"
 repository="https://github.com//$repoowner/joomla-cms.git"
 echo "Repository for updateserver.joomla.org: $repository"
 if [ -z "$extra" ] #are we on stable
@@ -36,13 +36,15 @@ else
     b="$majversion.$minversion.$patchversion-$extra$extranum"
 fi
 
+echo "Nightlies: Coming from: $s going to: $r branch: $b"
 if ($clone)
 then
   rm -rf update.joomla.org
   echo "Have you updated the branch on your repository?"
-  echo "Coming from: $s going to: $r branch: $b"
   read -p "Press any key to clone and do the update..."
   git clone git@github.com:$repoowner/update.joomla.org.git
+else
+  read -p "Press any key to start from existing repository"
 fi
 cd update.joomla.org
 git checkout master
@@ -54,7 +56,7 @@ oldtitle="Joomla $majversion.$minversion"
 newtitle="Joomla $majversion.$minversion.$patchversion Release"
 for f in "${files[@]}"
 do
-  echo "$f"
+  #echo "$f"
   sed -i -e "s/\(<infourl title=\"$oldtitle\).*\(<\/infourl>\)/<infourl title=\"$newtitle\">$infourl<\/infourl>/g" $f
 done
 #Replace dash pattern e.g. 4-4-1 to 4-4-2
@@ -62,7 +64,7 @@ olddash=$majversion-$minversion-$((patchversion-1))
 newdash=$majversion-$minversion-$patchversion
 for f in "${files[@]}"
 do
-  echo "$f"
+  #echo "$f"
   sed -i -e "s/$olddash/$newdash/g" $f
 done
 #Replace dot pattern e.g. 4-4-1 to 4-4-2
@@ -70,8 +72,15 @@ olddot=$majversion.$minversion.$((patchversion-1))
 newdot=$majversion.$minversion.$patchversion
 for f in "${files[@]}"
 do
-  echo "$f"
+  #echo "$f"
   sed -i -e "s/$olddot/$newdot/g" $f
+done
+#nightlies
+files=( "www/core/nightlies/next_major_extension.xml" "www/core/nightlies/next_major_list.xml" "www/core/nightlies/next_minor_extension.xml" "www/core/nightlies/next_minor_list.xml" "www/core/nightlies/next_patch_extension.xml" "www/core/nightlies/next_patch_list.xml" )
+for f in "${files[@]}"
+do
+  #echo "$f"
+  sed -i -e "s/$s/$r/g" $f
 done
 
 #git checkout 5.0.1-stable
