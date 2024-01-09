@@ -15,6 +15,7 @@ codename="Pamoja"
 reldate="2024-01-09 16:00"
 revdate="2024-01-09 16:01"
 checkout="$majversion.$minversion-dev"
+infourl="https:\/\/www.joomla.org\/announcements\/release-news\/5902-joomla-5-0-2-and-4-4-2-bug-fix-release.html"
 if [ -z "$extra" ]
 then
     branch="$majversion.$minversion.$patchversion-stable"
@@ -37,3 +38,4 @@ echo "Commit: $commit"
 echo "Next: $next"
 echo "Release Date: $reldate"
 echo "Revert to Dev Date: $revdate"
+echo "Infourl: $infourl"
