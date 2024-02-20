@@ -30,8 +30,8 @@ else
       s="$majversion.$minversion.$patchversion-$extra$extranum-dev"
       r="$majversion.$minversion.$patchversion-$extranext$extranumnext-dev"
     else
-      s="$majversion.$minversion.$patchversion-$oldextra$oldextranum-dev"
-      r="$majversion.$minversion.$patchversion-$extranext$extranumnext-dev"
+	s="$majversion.$minversion.$patchversion-$oldextra$oldextranum-dev"
+    	r="$majversion.$minversion.$patchversion-$extranext$extranumnext-dev"
     fi
     b="$majversion.$minversion.$patchversion-$extra$extranum"
 fi
@@ -48,6 +48,7 @@ else
 fi
 cd update.joomla.org
 git checkout master
+read -p "Press any key to do the update..."
 olddot=$majversion.$minversion.$((patchversion-1))
 newdot=$majversion.$minversion.$patchversion
 #Replace Title and Url of infourl
