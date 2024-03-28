@@ -1,4 +1,4 @@
-repoowner="joomla"
+repoowner="MacJoom"
 repository="https://github.com//$repoowner/joomla-cms.git"
 #repository="https://github.com//MacJoom/joomla-cms.git"
 joomladir="joomla-cms"
