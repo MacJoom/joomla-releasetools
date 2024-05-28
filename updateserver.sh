@@ -9,7 +9,18 @@ then
   exit
 fi
 clone=$1
-. globals.sh
+if ! [ -z "$2" ]
+then
+    if [ -f "globals$2.sh" ]
+    then
+        . globals$2.sh
+    else
+	echo "Error: globals$2.sh does not exist! Exit"
+	exit 9
+    fi
+else
+    . globals.sh
+fi
 repoowner="MacJoom"
 repository="https://github.com//$repoowner/joomla-cms.git"
 echo "Repository for updateserver.joomla.org: $repository"
@@ -17,8 +28,14 @@ if [ -z "$extra" ] #are we on stable
 then
     if [ "$extra" = "$oldextra" ] # did the extra change?
     then
-      s="$majversion.$minversion.$patchversion-dev"
-      r="$majversion.$minversion.$nextpatchversion-dev"
+      if [ "$patchversion" = "0" ] # are we on zero?
+      then
+	    s="$oldmajversion.$oldminversion.$oldpatchversion-dev"
+	    r="$majversion.$minversion.$nextpatchversion-dev"
+      else
+	    s="$majversion.$minversion.$patchversion-dev"
+	    r="$majversion.$minversion.$nextpatchversion-dev"
+      fi
     else
       s="$majversion.$minversion.$patchversion-$oldextra$oldextranum-dev"
       r="$majversion.$minversion.$nextpatchversion-dev"
@@ -49,40 +66,79 @@ fi
 cd update.joomla.org
 git checkout master
 read -p "Press any key to do the update..."
-olddot=$majversion.$minversion.$((patchversion-1))
-newdot=$majversion.$minversion.$patchversion
+if [ "$patchversion" = "0" ] # are we on zero?
+then
+    olddot=$oldmajversion.$oldminversion.$((oldpatchversion-1))
+    newdot=$majversion.$minversion.$patchversion
+else
+    olddot=$majversion.$minversion.$((patchversion-1))
+    newdot=$majversion.$minversion.$patchversion
+fi
 echo "Stable: Coming from: $olddot going to: $newdot"
 #Replace Title and Url of infourl
 files=( "www/core/list.xml" "www/core/sts/list_sts.xml" "www/core/sts/extension_sts.xml" "www/core/j4/default.xml" "www/core/j4/next.xml" "www/core/j5/default.xml" "www/core/j5/next.xml" )
-oldtitle="Joomla $majversion.$minversion"
-newtitle="Joomla $majversion.$minversion.$patchversion Release"
+if [ "$patchversion" = "0" ] # are we on zero? then replace version and description
+then
+    oldtitle="Joomla $oldmajversion.$oldminversion"
+    newtitle="Joomla $majversion.$minversion.$patchversion Release"    
+else
+    oldtitle="Joomla $majversion.$minversion"
+    newtitle="Joomla $majversion.$minversion.$patchversion Release"
+fi
+echo "Replace Title and Url of infourl $oldtitle $newtitle"
 for f in "${files[@]}"
 do
-  #echo "$f"
-  sed -i -e "s/\(<infourl title=\"$oldtitle\).*\(<\/infourl>\)/<infourl title=\"$newtitle\">$infourl<\/infourl>/g" $f
+    echo "$f"
+    sed -i -e "s/\(<infourl title=\"$oldtitle\).*\(<\/infourl>\)/<infourl title=\"$newtitle\">$infourl<\/infourl>/g" $f
+    if [ "$patchversion" = "0" ] # are we on zero? then replace version and description
+    then
+	echo "Setting new Major/Minor $oldmajversion.$oldminversion to $majversion.$minversion version in name and description"
+	sed -i -e "s/<name>Joomla\! $oldmajversion.$oldminversion<\/name>/<name>Joomla\! $majversion.$minversion<\/name>/g" $f
+	sed -i -e "s/<description>Joomla\! $oldmajversion.$oldminversion CMS<\/description>/<description>Joomla! $majversion.$minversion CMS<\/description>/g" $f
+    fi
 done
 #Replace dash pattern e.g. 4-4-1 to 4-4-2
-olddash=$majversion-$minversion-$((patchversion-1))
-newdash=$majversion-$minversion-$patchversion
+if [ "$patchversion" = "0" ] # are we on zero? then replace version and description
+then
+    olddash=$oldmajversion-$oldminversion-$((oldpatchversion-1))
+    newdash=$majversion-$minversion-$patchversion
+else
+    olddash=$majversion-$minversion-$((patchversion-1))
+    newdash=$majversion-$minversion-$patchversion
+fi
+echo "Replace dash pattern e.g. $olddash to $newdash"
 for f in "${files[@]}"
 do
-  #echo "$f"
+  echo "$f"
   sed -i -e "s/$olddash/$newdash/g" $f
 done
 #Replace dot pattern e.g. 4-4-1 to 4-4-2
-olddot=$majversion.$minversion.$((patchversion-1))
-newdot=$majversion.$minversion.$patchversion
+if [ "$patchversion" = "0" ] # are we on zero? then replace version and description
+then
+    olddot=$oldmajversion.$oldminversion.$((oldpatchversion-1))
+    newdot=$majversion.$minversion.$patchversion
+else
+    olddot=$majversion.$minversion.$((patchversion-1))
+    newdot=$majversion.$minversion.$patchversion
+fi
+
+echo "Replace dot pattern e.g. $olddot to $newdot"
 for f in "${files[@]}"
 do
-  #echo "$f"
+  echo "$f"
   sed -i -e "s/$olddot/$newdot/g" $f
 done
 #nightlies
 files=( "www/core/nightlies/next_major_extension.xml" "www/core/nightlies/next_major_list.xml" "www/core/nightlies/next_minor_extension.xml" "www/core/nightlies/next_minor_list.xml" "www/core/nightlies/next_patch_extension.xml" "www/core/nightlies/next_patch_list.xml" )
+echo "nightlies"
 for f in "${files[@]}"
 do
-  #echo "$f"
+  echo "$f"
   sed -i -e "s/$s/$r/g" $f
+    if [ "$patchversion" = "0" ] # are we on zero? then replace version and description
+    then
+	sed -i -e "s/<name>Joomla\! $oldmajversion.$oldminversion Nightly Build<\/name>/<name>Joomla! $majversion.$minversion Nightly Build<\/name>/g" $f
+    fi
 done
 
 #git checkout 5.0.1-stable

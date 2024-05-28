@@ -6,6 +6,7 @@ cd joomla-cms
 git status
 read -p "Press any key to start build/bump ..."
 php build/bump.php -v $tag -c $codename -d "$reldate"
+git add .
 git commit -am "$commit"
 git tag -s -m "$commit" $tag
 read -p "Press any key to start build/build ..."

@@ -6,7 +6,7 @@ rm -rf joomla-cms
 git clone $repository
 cd joomla-cms
 git checkout $checkout
-git fetch upstream
+git fetch
 git pull
 #read -p "Press any key to create branch ..."
 #git branch $branch
