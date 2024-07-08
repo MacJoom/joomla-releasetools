@@ -16,9 +16,10 @@ extranext=""
 extranumnext=""
 codename="Pamoja"
 reldate="2024-05-28 16:00"
-revdate="2024-05-28 16:00"
+revdate="2024-05-28 16:01"
 checkout="$majversion.$minversion-dev"
-infourl="https:\/\/www.joomla.org\/announcements\/release-news\/5907-joomla-5-1-0-and-joomla-4-4-4-are-here.html"
+infourl="https:\/\/www.joomla.org\/announcements\/release-news\/5908-joomla-5-1-1-and-joomla-4-4-5-are-here.html"
+#infourl="https:\/\/www.joomla.org\/announcements\/release-news\/5907-joomla-5-1-0-and-joomla-4-4-4-are-here.html"
 if [ -z "$extra" ]
 then
     branch="$majversion.$minversion.$patchversion-stable"

@@ -64,7 +64,7 @@ else
   read -p "Press any key to start from existing repository"
 fi
 cd update.joomla.org
-git checkout master
+#git checkout 4.4.5-5.1.1
 read -p "Press any key to do the update..."
 if [ "$patchversion" = "0" ] # are we on zero?
 then
