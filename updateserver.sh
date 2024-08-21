@@ -76,7 +76,7 @@ else
 fi
 echo "Stable: Coming from: $olddot going to: $newdot"
 #Replace Title and Url of infourl
-files=( "www/core/list.xml" "www/core/sts/list_sts.xml" "www/core/sts/extension_sts.xml" "www/core/j4/default.xml" "www/core/j4/next.xml" "www/core/j5/default.xml" "www/core/j5/next.xml" )
+files=( "www/core/list.xml" "www/core/sts/list_sts.xml" "www/core/sts/extension_sts.xml" "www/core/j4/default.xml" "www/core/j4/next.xml")
 if [ "$patchversion" = "0" ] # are we on zero? then replace version and description
 then
     oldtitle="Joomla $oldmajversion.$oldminversion"
