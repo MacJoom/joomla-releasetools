@@ -22,7 +22,8 @@ else
     . globals.sh
 fi
 repoowner="MacJoom"
-repository="https://github.com//$repoowner/joomla-cms.git"
+repository="https://github.com//$repoowner/update.joomla.org.git"
+#git@github.com:MacJoom/update.joomla.org.git
 echo "Repository for updateserver.joomla.org: $repository"
 if [ -z "$extra" ] #are we on stable
 then
