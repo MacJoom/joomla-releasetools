@@ -21,7 +21,7 @@ revdate="2026-08-18 18:01"
 checkout="$majversion.$minversion-dev"
 #infourl="https:\/\/www.joomla.org\/announcements\/release-news\/5921-joomla-5-2-5-security-bugfix-release.html"
 #infourl="https:\/\/developer.joomla.org\/news\/1067-joomla-6-2-alpha3-one-step-closer-to-beta.html"
-infourl="https:\/\/developer.joomla.org\/news\/1078-joomla-6-2-beta-1-the-next-phase-starts-now.html
+infourl="https:\/\/developer.joomla.org\/news\/1078-joomla-6-2-beta-1-the-next-phase-starts-now.html"
 if [ -z "$extra" ]
 then
     branch="$majversion.$minversion.$patchversion-stable"
