@@ -19,7 +19,7 @@ codename="Mwezi"
 reldate="2026-09-29 18:00"
 revdate="2026-09-29 18:01"
 checkout="$majversion.$minversion-dev"
-infourl="https:\/\/developer.joomla.org\/news\/1080-joomla-6-2-beta-3-preparing-for-the-stable.html"
+infourl="https:\/\/www.joomla.org\/announcements/release-news\/joomla-6-2-release-candidate-test-the-final-package.html"
 #infourl="https:\/\/developer.joomla.org\/news\/1079-joomla-6-2-beta-2-test-test-test.html"
 if [ -z "$extra" ]
 then

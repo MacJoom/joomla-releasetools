@@ -12,7 +12,7 @@ You need a copy of a .git/config file for the chosen repository e.g. config.git.
 
 Work in progress! Works for Minor releases only at the moment
 
-I have done some Joomla 4.4.0 Alpha releases with the following tools
+I have done most of the  Joomla 4.4 and Joomla 6.2 releases with the following tools
 
 Any comments and/or PR's welcome!
 
@@ -27,6 +27,8 @@ Any comments and/or PR's welcome!
 8) pushtag.sh (Pushes the tag so you can prepare the release on github, upload the files)
 9) reverttodevandpush.sh (Does the revert to dev bump and the final push)
 
+## Upmerge
+use upmerge-prepare.sh to help building the upmerge PR
 
 ## globals.sh
 - Set's up all constants used by the scripts
