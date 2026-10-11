@@ -16,10 +16,10 @@ extranum="2"
 extranext="rc"
 extranumnext="3"
 codename="Mwezi"
-reldate="2026-09-30 18:00"
-revdate="2026-09-30 18:01"
+reldate="2026-10-06 18:00"
+revdate="2026-10-06 18:01"
 checkout="$majversion.$minversion-dev"
-infourl="https:\/\/www.joomla.org\/announcements/release-news\/joomla-6-2-release-candidate-test-the-final-package.html"
+infourl="https://www.joomla.org/announcements/release-news/joomla-6-2-release-candidate-test-the-final-package.html"
 #infourl="https:\/\/developer.joomla.org\/news\/1079-joomla-6-2-beta-2-test-test-test.html"
 if [ -z "$extra" ]
 then
