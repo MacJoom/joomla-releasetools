@@ -16,9 +16,9 @@ extranum=""
 extranext=""
 extranumnext=""
 codename="Mwezi"
-reldate="2026-10-13 18:00"
-revdate="2026-10-13 18:01"
-previoustag="6.1.4"
+reldate="2026-11-24 18:00"
+revdate="2026-11-24 18:01"
+previoustag="6.2.0"
 checkout="$majversion.$minversion-dev"
 infourl="https://www.joomla.org/announcements/release-news/joomla-6-2-is-here.html"
 #infourl="https://www.joomla.org/announcements/release-news/joomla-6-2-release-candidate-test-the-final-package.html"
@@ -43,7 +43,8 @@ else
     upmergeMaj=$((majversion - 1))
     upmergeMin=4
 fi
-
+upmergeMin=4
+upmergeMaj=5
 upmergeBranch="${upmergeMaj}.${upmergeMin}-dev"
 
 echo "Repository: $repository"
