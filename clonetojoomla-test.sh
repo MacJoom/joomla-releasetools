@@ -1,9 +1,7 @@
 #!/bin/bash
-. globals.sh
-read -p "Press any key to start..."
-export GPG_TTY=$(tty)
-rm -rf joomla-test
-git clone $repository joomla-test
-cd joomla-test
-git checkout $checkout
-cp -rf ../config.git.$repoowner .git/config
+# Fresh scratch clone of $checkout into joomla-test.
+. "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")/lib.sh"
+
+require_git_config "$repoowner"
+clone_fresh joomla-test "$checkout"
+install_git_config "$repoowner"

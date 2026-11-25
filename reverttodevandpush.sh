@@ -1,12 +1,12 @@
 #!/bin/bash
-. globals.sh
-export GPG_TTY=$(tty)
-cd joomla-cms
-read -p "Press 'enter' to build reset to dev ..."
-php build/bump.php -v $next-dev -d "$revdate"
-#php build/bump.php -v 4.4.14-dev -d "$revdate"
+# After the release: bump to $next-dev, commit and push (this also pushes the release commit).
+. "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")/lib.sh"
+
+enter_dir "$CMS_DIR"
+pause "Next: build/bump.php to $next-dev."
+run php build/bump.php -v "$next-dev" -d "$revdate"
 git add .
-read -p "Press any to commit ..."
-git commit -s -m "Reset to dev"
-read -p "Press any to push ..."
-git push
+pause "Next: commit 'Reset to dev'."
+run git commit -s -m "Reset to dev"
+pause "Next: git push."
+run git push

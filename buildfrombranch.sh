@@ -1,15 +1,11 @@
 #!/bin/bash
-. globals.sh
-read -p "Press any key to start..."
-export GPG_TTY=$(tty)
-rm -rf joomla-cms
-git clone $repository
-cd joomla-cms
-git checkout $branch
-cp -rf ../config.git.$repoowner .git/config
-read -p "Press any key to start build/bump ..."
-php build/bump.php -v $tag -c $codename -d "$reldate"
-git commit -am "$commit"
-git tag -s -m "$commit" $tag
-read -p "Press any key to start build/build ..."
-php build/build.php
+# Legacy release-branch flow: fresh clone of the already pushed $branch, then bump, commit, tag, build.
+. "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")/lib.sh"
+
+pause "Start the release build from branch $branch."
+require_git_config "$repoowner"
+clone_fresh "$CMS_DIR" "$branch"
+install_git_config "$repoowner"
+bump_release
+commit_and_tag
+build_packages

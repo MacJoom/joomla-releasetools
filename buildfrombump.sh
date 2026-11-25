@@ -1,13 +1,10 @@
 #!/bin/bash
-. globals.sh
-read -p "Press any key to start... 1) bump 2) commit 3) tag 4) build"
-export GPG_TTY=$(tty)
-cd joomla-cms
+# Resume in the existing clone at the bump step: bump, commit, tag, build (e.g. after secmerge.sh).
+. "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")/lib.sh"
+
+enter_dir "$CMS_DIR"
 git status
-read -p "Press any key to start build/bump ..."
-php build/bump.php -v $tag -c $codename -d "$reldate"
+bump_release
 git add .
-git commit -am "$commit"
-git tag -s -m "$commit" $tag
-read -p "Press any key to start build/build ..."
-php build/build.php
+commit_and_tag
+build_packages

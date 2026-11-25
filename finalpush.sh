@@ -1,9 +1,9 @@
 #!/bin/bash
-. globals.sh
-export GPG_TTY=$(tty)
-cd joomla-cms
+# Push the current branch of the clone (if the push in reverttodevandpush.sh was skipped).
+. "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")/lib.sh"
+
+enter_dir "$CMS_DIR"
 git status
 git branch -v
-read -p "Press any key to do the final push..."
-git push
-
+pause "Next: git push."
+run git push

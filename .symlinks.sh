@@ -1,16 +1,25 @@
-#/bin/bash
-#Build Symlinks to all .sh Files to the parent directory
-#!/usr/bin/env bash
+#!/bin/bash
+# Link every script of this repo into the parent directory (the work dir the scripts run in).
+# Existing links are replaced, links to removed scripts are deleted, real files are left alone.
+set -euo pipefail
 
-SCRIPT_DIR=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
+SCRIPT_DIR=$(cd "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")" && pwd)
+cd "$SCRIPT_DIR/.."
 
-echo $SCRIPT_DIR
-cd $SCRIPT_DIR
-for script in *.sh
-do
-    rm -f ../$script
-    ln -s $SCRIPT_DIR/$script ../$script
-    echo Symlinks created: $script
+for link in *.sh; do
+    if [[ -L $link && $(readlink "$link") == "$SCRIPT_DIR"/* && ! -e $link ]]; then
+        rm -f -- "$link"
+        echo "Removed stale link: $link"
+    fi
 done
-cd ..
 
+for script in "$SCRIPT_DIR"/*.sh; do
+    name=$(basename "$script")
+    [[ $name == lib.sh ]] && continue
+    if [[ -e $name && ! -L $name ]]; then
+        echo "Skipped (not a symlink, left alone): $name"
+        continue
+    fi
+    ln -sfn "$script" "$name"
+    echo "Linked: $name"
+done

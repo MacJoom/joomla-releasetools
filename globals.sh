@@ -1,61 +1,28 @@
-repoowner="joomla"
+# Release configuration, sourced by lib.sh. Edit at the start of every release.
+# Derived values (tag, commit, next, branch, ...) are computed in lib.sh and printed by every script.
+
+repoowner="joomla"            # owner of the CMS repo to release from; selects ../config.git.<repoowner>
 #repoowner="MacJoom"
-repository="https://github.com//$repoowner/joomla-cms.git"
-#repository="https://github.com//MacJoom/joomla-cms.git"
-joomladir="joomla-cms"
+forkowner="MacJoom"           # your fork, used by upmerge-prepare.sh and updateserver.sh
+
 majversion="6"
 minversion="2"
 patchversion="1"
-oldmajversion=""
+extra=""                      # pre-release stage of this release (alpha, beta, rc), empty for stable
+extranum=""
+extranext=""                  # stage after this one, used for the reset-to-dev version
+extranumnext=""
+oldextra=""                   # stage of the previous release (updateserver.sh)
+oldextranum=""
+oldmajversion=""              # previous version, only needed by updateserver.sh for X.Y.0 releases
 oldminversion=""
 oldpatchversion=""
-oldextra=""
-oldextranum=""
-extra=""
-extranum=""
-extranext=""
-extranumnext=""
+
 codename="Mwezi"
-reldate="2026-11-24 16:00"
-revdate="2026-11-24 16:01"
-previoustag="6.2.0"
-checkout="$majversion.$minversion-dev"
+reldate="2026-11-24 16:00"    # UTC
+revdate="2026-11-24 16:01"    # reset-to-dev date
+previoustag="6.2.0"           # for the GitHub release text
 infourl="https://www.joomla.org/announcements/release-news/joomla-6-2-1-security-bugfix-release.html"
-if [ -z "$extra" ]
-then
-    branch="$majversion.$minversion.$patchversion-stable"
-    tag="$majversion.$minversion.$patchversion"
-    commit="Joomla! $majversion.$minversion.$patchversion Stable"
-    nextpatchversion=$((patchversion+1))
-    next="$majversion.$minversion.$nextpatchversion"
-else
-    branch="$majversion.$minversion.$patchversion-$extra"
-    tag="$majversion.$minversion.$patchversion-$extra$extranum"
-    commit="Joomla! $majversion.$minversion.$patchversion ${extra^} $extranum"
-    next="$majversion.$minversion.$patchversion-$extranext$extranumnext"
-fi
 
-if (( minversion > 0 )); then
-    upmergeMaj=$majversion
-    upmergeMin=$((minversion - 1))
-else
-    upmergeMaj=$((majversion - 1))
-    upmergeMin=4
-fi
-upmergeMin=4
-upmergeMaj=5
-upmergeBranch="${upmergeMaj}.${upmergeMin}-dev"
-
-echo "Repository: $repository"
-echo "Checkout: $checkout"
-echo "Branch: $branch"
-echo "Upmerge-Branch: $upmergeBranch"
-echo "Tag: $tag"
-echo "Commit: $commit"
-echo "Next: $next"
-echo "Release Date: $reldate"
-echo "Revert to Dev Date: $revdate"
-echo "Infourl: $infourl"
-echo "Codename: $codename"
-echo "UpmergeBranch: $upmergeBranch"
-echo "PreviousBranch: $previoustag for github text"
+#checkout="6.2-dev"           # default: $majversion.$minversion-dev
+upmergeBranch="5.4-dev"       # default: the previous minor's -dev branch (6.1-dev here)

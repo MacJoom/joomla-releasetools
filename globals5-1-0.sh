@@ -1,7 +1,5 @@
+# Snapshot of an earlier release config (see globals.sh)
 repoowner="joomla"
-repository="https://github.com//$repoowner/joomla-cms.git"
-#repository="https://github.com//MacJoom/joomla-cms.git"
-joomladir="joomla-cms"
 majversion="5"
 minversion="1"
 patchversion="1"
@@ -17,28 +15,4 @@ extranumnext="3"
 codename="?"
 reldate="2024-05-28 16:00"
 revdate="2024-05-28 16:01"
-checkout="$majversion.$minversion-dev"
-infourl="https:\/\/www.joomla.org\/announcements\/release-news\/5908-joomla-5-1-1-and-joomla-4-4-5-are-here.html"
-if [ -z "$extra" ]
-then
-    branch="$majversion.$minversion.$patchversion-stable"
-    tag="$majversion.$minversion.$patchversion"
-    commit="Joomla! $majversion.$minversion.$patchversion Stable"
-    nextpatchversion=$((patchversion+1))
-    next="$majversion.$minversion.$nextpatchversion"
-else
-    branch="$majversion.$minversion.$patchversion-$extra"
-    tag="$majversion.$minversion.$patchversion-$extra$extranum"
-    commit="Joomla! $majversion.$minversion.$patchversion ${extra^} $extranum"
-    next="$majversion.$minversion.$patchversion-$extranext$extranumnext"
-fi
-
-echo "Repository: $repository"
-echo "Checkout: $checkout"
-echo "Branch: $branch"
-echo "Tag: $tag"
-echo "Commit: $commit"
-echo "Next: $next"
-echo "Release Date: $reldate"
-echo "Revert to Dev Date: $revdate"
-echo "Infourl: $infourl"
+infourl="https://www.joomla.org/announcements/release-news/5908-joomla-5-1-1-and-joomla-4-4-5-are-here.html"

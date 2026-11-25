@@ -1,9 +1,7 @@
 #!/bin/bash
-. globals.sh
-read -p "Press any key to start..."
-export GPG_TTY=$(tty)
-rm -rf joomla-cms
-git clone $repository
-cd joomla-cms
-git checkout $checkout
-cp -rf ../config.git.$repoowner .git/config
+# Fresh clone of $checkout into joomla-cms with the git config installed. No bump, no build.
+. "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")/lib.sh"
+
+require_git_config "$repoowner"
+clone_fresh "$CMS_DIR" "$checkout"
+install_git_config "$repoowner"

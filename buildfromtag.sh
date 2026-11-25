@@ -1,10 +1,9 @@
 #!/bin/bash
-. globals.sh
-read -p "Press any key to start... 1) tag 2) build"
-export GPG_TTY=$(tty)
-cd joomla-cms
+# Resume in the existing clone at the tag step (the bump commit already exists): tag, build.
+. "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")/lib.sh"
+
+enter_dir "$CMS_DIR"
 git status
-read -p "Press any key to start tag/build  ..."
-git tag -s -m "$commit" $tag
-read -p "Press any key to start build/build ..."
-php build/build.php
+pause "Next: create signed tag $tag."
+run git tag -s -m "$commit" "$tag"
+build_packages

@@ -1,6 +1,6 @@
 #!/bin/bash
-. globals.sh
-cd joomla-cms
-export GPG_TTY=$(tty)
-read -p "Press any key to start build/build ..."
-php build/build.php
+# Only rebuild the packages in the existing clone.
+. "$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")/lib.sh"
+
+enter_dir "$CMS_DIR"
+build_packages
